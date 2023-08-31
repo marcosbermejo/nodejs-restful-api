@@ -12,6 +12,9 @@ This project is a RESTful API developed in Node.js using Express.js as the prima
 
 - **Integration Testing with Jest and Supertest:** Integration tests have been created using Jest and Supertest to ensure the proper functioning of the API.
 
+- **Swagger Documentation:** API documentation is available using Swagger. You can access the Swagger documentation at [http://localhost:3000/](http://localhost:3000) when the application is running.
+
+
 ## Running Instructions
 
 1. **Install Dependencies:**
