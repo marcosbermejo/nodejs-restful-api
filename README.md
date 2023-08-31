@@ -14,6 +14,8 @@ This project is a RESTful API developed in Node.js using Express.js as the prima
 
 - **Logging with Winston:** Application events and logs are managed using Winston, providing a structured approach to log management.
 
+- **Husky and Commitlint:** Husky is used to run ESLint and tests before each commit to ensure code quality. Commitlint is used to validate commit message titles according to conventional commit standards.
+
 - **Swagger Documentation:** API documentation is available using Swagger. You can access the Swagger documentation at [http://localhost:3000/](http://localhost:3000) when the application is running.
 
 
