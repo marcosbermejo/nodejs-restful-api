@@ -1,0 +1,29 @@
+paths:
+  /teams:
+    get:
+      summary: Get the list of water polo teams.
+      tags:
+        - Teams
+      description: Retrieve the complete list of registered water polo teams.
+      responses:
+        '200':
+          description: List of teams retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: Unique ID of the club.
+                    name:
+                      type: string
+                      description: Name of the water polo club.
+                    location:
+                      type: string
+                      description: Location of the club.
+        '500':
+          description: Internal server error.
+
