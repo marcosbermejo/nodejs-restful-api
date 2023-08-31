@@ -16,7 +16,10 @@ This project is a RESTful API developed in Node.js using Express.js as the prima
 
 - **Husky and Commitlint:** Husky is used to run ESLint and tests before each commit to ensure code quality. Commitlint is used to validate commit message titles according to conventional commit standards.
 
+- **Metrics with Prometheus and prom-client:** The application tracks request metrics using Prometheus and the `prom-client` library, allowing you to monitor and analyze API performance. You can access the metrics in Prometheus format at [http://localhost:3000/metrics](http://localhost:3000/metrics) when the application is running.
+
 - **Swagger Documentation:** API documentation is available using Swagger. You can access the Swagger documentation at [http://localhost:3000/](http://localhost:3000) when the application is running.
+
 
 
 ## Running Instructions
