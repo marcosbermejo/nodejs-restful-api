@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=marcosbermejo_nodejs-restful-api&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=marcosbermejo_nodejs-restful-api)
+
 # RESTful API with Express and TypeScript
 
 This project is a RESTful API developed in Node.js using Express.js as the primary framework. The API is written in TypeScript for better typing support and is configured with best development practices. Below are the key highlights of the project:
