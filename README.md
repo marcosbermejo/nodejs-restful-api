@@ -22,6 +22,7 @@ This project is a RESTful API developed in Node.js using Express.js as the prima
 
 - **Swagger Documentation:** API documentation is available using Swagger. You can access the Swagger documentation at [http://localhost:3000/](http://localhost:3000) when the application is running.
 
+- **Code Quality Monitoring with SonarCloud:** The code quality and security of this project are continuously monitored by SonarCloud, providing insights and suggestions for improvement.
 
 
 ## Running Instructions
