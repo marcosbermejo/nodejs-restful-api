@@ -26,7 +26,7 @@ const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 const uiOptions = {
   customCssUrl: '/swagger.css',
-  customSiteTitle: "Waterpolo API Doc",
+  customSiteTitle: 'Waterpolo API Doc',
   customfavIcon: '/favicon.ico',
 };
 
