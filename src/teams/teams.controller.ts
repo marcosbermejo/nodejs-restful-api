@@ -14,9 +14,7 @@ router.get('/', (req: Request, res: Response) => {
       name: 'Team B',
       location: 'City B',
     },
-  ])
-})
+  ]);
+});
 
-
-
-export default router
+export default router;
