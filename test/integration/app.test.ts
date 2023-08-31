@@ -32,5 +32,19 @@ describe('Integration Tests for the Express Application', () => {
       const response = await request(app).get('/clubs');
       expect(response.headers['x-powered-by']).toBeUndefined();
     });
+
+    it('Should add CORS headers in the response', async () => {
+      const response = await request(app)
+        .options('/clubs')
+        .set('Origin', 'https://my-domain.com');
+
+      expect(response.status).toBe(204);
+      expect(response.headers).toMatchObject({
+        'access-control-allow-origin': '*',
+        'access-control-allow-methods': 'OPTIONS,GET,POST,PATCH,PUT,DELETE',
+        'access-control-allow-headers': 'Content-Type,Authorization',
+      });
+      expect(response.body.contents).toBeUndefined();
+    });
   });
 });
