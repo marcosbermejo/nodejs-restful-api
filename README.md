@@ -10,6 +10,8 @@ This project is a RESTful API developed in Node.js using Express.js as the prima
 
 - **TypeScript Support:** The project is written in TypeScript, providing an additional layer of static typing to prevent common development errors.
 
+- **Mongoose for Data Access:** Data is managed and accessed using Mongoose, a popular ODM (Object-Document Mapping) library for MongoDB. This enables efficient and structured data operations within the application.
+
 - **Linting with ESLint and Airbnb Base:** ESLint has been configured following Airbnb's style rules to maintain clean and consistent code.
 
 - **Integration Testing with Jest and Supertest:** Integration tests have been created using Jest and Supertest to ensure the proper functioning of the API.
@@ -24,6 +26,19 @@ This project is a RESTful API developed in Node.js using Express.js as the prima
 
 - **Code Quality Monitoring with SonarCloud:** The code quality and security of this project are continuously monitored by SonarCloud, providing insights and suggestions for improvement.
 
+## Setting up MongoDB
+
+To run this project, you'll need to have MongoDB installed. The easiest way to get started is by using Docker to run a MongoDB container.
+
+1. Open your terminal and run the following command to start a MongoDB container:
+
+   ```bash
+   docker run --name mongodb -p 27017:27017 -d mongo
+   ```
+
+Note: This command is required to run the API locally at http://localhost:3000.
+
+For running integration tests, you don't need to execute the Docker command mentioned above. The integration tests utilize `mongodb-memory-server` to create an in-memory MongoDB instance for testing purposes.
 
 ## Running Instructions
 
@@ -39,7 +54,9 @@ This project is a RESTful API developed in Node.js using Express.js as the prima
 
 3. **Run Tests:**
    ```bash
-   npm test
+   npm test # integration + unit tests
+   npm test:int # integration tests
+   npm test:unit # unit tests + code coverage
    ```
   
 4. **Generate Code Coverage Reports:**

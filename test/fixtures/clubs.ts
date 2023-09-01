@@ -1,0 +1,81 @@
+import IClub from '../../src/club/club.interface';
+
+export default [
+  {
+    name: 'Unió Esportiva d\'Horta',
+    address: 'Address 0, Barcelona',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Natació Barcelona',
+    address: 'Address 1, Barcelona',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Natació Sabadell',
+    address: 'Address 2, Sabadell',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Esportiu Mediterrani',
+    address: 'Address 3, Barcelona',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Natació Terrassa',
+    address: 'Address 4, Terrassa',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Natació Atlètic-Barceloneta',
+    address: 'Address 5, Barcelona',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Natació Sant Andreu',
+    address: 'Address 6, Barcelona',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Natació Montjuïc',
+    address: 'Address 7, Barcelona',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Natació Rubí',
+    address: 'Address 8, Rubí',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Natació Igualada',
+    address: 'Address 9, Igualada',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    name: 'Club Natació Reus Ploms',
+    address: 'Address 10, Reus',
+    deleted: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+] as IClub[];

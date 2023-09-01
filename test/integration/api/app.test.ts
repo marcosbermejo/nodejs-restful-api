@@ -1,7 +1,15 @@
+import { Application } from 'express';
 import request from 'supertest';
-import app from '../../src/app';
+import bootstrap from '../../../src/app';
+import '../setup';
 
 describe('Integration Tests for the Express Application', () => {
+  let app: Application;
+
+  beforeAll(async () => {
+    app = await bootstrap();
+  });
+
   describe('Documentation', () => {
     it('Should show Swagger Doc on the GET / route', async () => {
       const response = await request(app).get('/');

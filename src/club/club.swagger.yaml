@@ -1,0 +1,29 @@
+paths:
+  /clubs:
+    get:
+      summary: Get the list of water polo clubs.
+      tags:
+        - Clubs
+      description: Retrieve the complete list of registered water polo clubs.
+      responses:
+        '200':
+          description: List of clubs retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                      description: Unique UUID of the club.
+                    name:
+                      type: string
+                      description: Name of the water polo club.
+                    address:
+                      type: string
+                      description: Address of the club.
+        '500':
+          description: Internal server error.
