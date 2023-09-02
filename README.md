@@ -6,25 +6,29 @@ This project is a RESTful API developed in Node.js using Express.js as the prima
 
 ## Key Features
 
-- **RESTful API with Express:** The application uses Express.js to create a RESTful API that provides endpoints for interacting with resources.
+- **RESTful API with Express:** The application uses `Express.js` to create a RESTful API that provides endpoints for interacting with resources.
 
-- **TypeScript Support:** The project is written in TypeScript, providing an additional layer of static typing to prevent common development errors.
+- **TypeScript Support:** The project is written in `TypeScript`, providing an additional layer of static typing to prevent common development errors.
 
-- **Mongoose for Data Access:** Data is managed and accessed using Mongoose, a popular ODM (Object-Document Mapping) library for MongoDB. This enables efficient and structured data operations within the application.
+- **Mongoose for Data Access:** Data is managed and accessed using `Mongoose`, a popular ODM (Object-Document Mapping) library for `MongoDB`. This enables efficient and structured data operations within the application.
 
-- **Linting with ESLint and Airbnb Base:** ESLint has been configured following Airbnb's style rules to maintain clean and consistent code.
+- **Centralized Error Handling with express-async-errors:** Unhandled errors are centrally managed using the `express-async-errors` module, ensuring robust error handling throughout the application.
 
-- **Integration Testing with Jest and Supertest:** Integration tests have been created using Jest and Supertest to ensure the proper functioning of the API.
+- **Data Validation with express-validator:** Input data is validated using the popular `express-validator` library, helping to ensure data integrity and security.
 
-- **Logging with Winston:** Application events and logs are managed using Winston, providing a structured approach to log management.
+- **Linting with ESLint and Airbnb Base:** `ESLint` has been configured following Airbnb's style rules to maintain clean and consistent code.
 
-- **Husky and Commitlint:** Husky is used to run ESLint and tests before each commit to ensure code quality. Commitlint is used to validate commit message titles according to conventional commit standards.
+- **Integration Testing with Jest and Supertest:** Integration tests have been created using `Jest` and `Supertest` to ensure the proper functioning of the API.
+
+- **Logging with Winston:** Application events and logs are managed using `Winston`, providing a structured approach to log management.
+
+- **Husky and Commitlint:** `Husky` is used to run ESLint and tests before each commit to ensure code quality. `Commitlint` is used to validate commit message titles according to conventional commit standards.
 
 - **Metrics with Prometheus and prom-client:** The application tracks request metrics using Prometheus and the `prom-client` library, allowing you to monitor and analyze API performance. You can access the metrics in Prometheus format at [http://localhost:3000/metrics](http://localhost:3000/metrics) when the application is running.
 
-- **Swagger Documentation:** API documentation is available using Swagger. You can access the Swagger documentation at [http://localhost:3000/](http://localhost:3000) when the application is running.
+- **Swagger Documentation:** API documentation is available using `Swagger`. You can access the Swagger documentation at [http://localhost:3000/](http://localhost:3000) when the application is running.
 
-- **Code Quality Monitoring with SonarCloud:** The code quality and security of this project are continuously monitored by SonarCloud, providing insights and suggestions for improvement.
+- **Code Quality Monitoring with SonarCloud:** The code quality and security of this project are continuously monitored by `SonarCloud`, providing insights and suggestions for improvement.
 
 ## Setting up MongoDB
 

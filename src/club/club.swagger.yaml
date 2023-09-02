@@ -4,7 +4,7 @@ paths:
       summary: Get the list of water polo clubs.
       tags:
         - Clubs
-      description: Retrieve the complete list of registered water polo clubs.
+      description: Retrieve the list of active water polo clubs.
       responses:
         '200':
           description: List of clubs retrieved successfully.
@@ -15,9 +15,8 @@ paths:
                 items:
                   type: object
                   properties:
-                    id:
+                    _id:
                       type: string
-                      format: uuid
                       description: Unique UUID of the club.
                     name:
                       type: string
@@ -27,3 +26,81 @@ paths:
                       description: Address of the club.
         '500':
           description: Internal server error.
+
+    post:
+      summary: Create a new water polo club.
+      tags:
+        - Clubs
+      description: Create a new water polo club with the provided name and address.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the water polo club. Must be at least 3 characters long.
+                  minLength: 3
+                address:
+                  type: string
+                  description: Address of the club (optional).
+            required:
+              - name
+      responses:
+        '201':
+          description: Club created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    description: Unique UUID of the club.
+                  name:
+                    type: string
+                    description: Name of the water polo club.
+                  address:
+                    type: string
+                    description: Address of the club.
+        '400':
+          description: Bad request (e.g., invalid input).
+        '500':
+          description: Internal server error
+
+  /clubs/{id}:
+    get:
+      summary: Get a water polo club by ID.
+      tags:
+        - Clubs
+      description: Retrieve a water polo club by its unique ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique ID of the club to retrieve.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Club retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    description: Unique UUID of the club.
+                  name:
+                    type: string
+                    description: Name of the water polo club.
+                  address:
+                    type: string
+                    description: Address of the club.
+        '404':
+          description: Club not found.
+        '500':
+          description: Internal server error

@@ -1,7 +1,10 @@
 import { Application } from 'express';
 import request from 'supertest';
 import bootstrap from '../../../src/app';
+import Club from '../../../src/club/club.model';
+
 import '../setup';
+import { ERROR_500 } from '../../../src/messages';
 
 describe('Integration Tests for the Express Application', () => {
   let app: Application;
@@ -53,6 +56,18 @@ describe('Integration Tests for the Express Application', () => {
         'access-control-allow-headers': 'Content-Type,Authorization',
       });
       expect(response.body.contents).toBeUndefined();
+    });
+  });
+
+  describe('Async error handling', () => {
+    it('Should return a centralized 500 error in case of any exception', async () => {
+      const createMock = jest.spyOn(Club, 'findAllActive').mockRejectedValue(new Error('Any random error'));
+      const response = await request(app).get('/clubs');
+
+      expect(response.status).toBe(500);
+      expect(response.body.message).toBe(ERROR_500);
+
+      createMock.mockRestore();
     });
   });
 });

@@ -4,7 +4,7 @@ import IClub, { IClubModel } from './club.interface';
 const ClubSchema = new Schema<IClub, IClubModel>(
   {
     name: { type: String, required: true, index: true },
-    address: { type: String, required: true },
+    address: { type: String, required: false },
     deleted: { type: Boolean, default: false },
   },
   {
