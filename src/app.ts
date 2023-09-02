@@ -12,6 +12,15 @@ import swaggerSpec, { uiOptions } from './swagger';
 
 import { metricsMiddleware, metricsController } from './metrics';
 import errorHandler from './errors';
+import IClub from './club/club.interface';
+
+declare global{
+  namespace Express {
+      interface Request {
+        club?: IClub
+      }
+  }
+}
 
 export default async function bootstrap() {
   await connectDB();

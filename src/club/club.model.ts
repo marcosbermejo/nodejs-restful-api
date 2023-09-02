@@ -15,6 +15,12 @@ const ClubSchema = new Schema<IClub, IClubModel>(
         return this.find({ deleted: false });
       },
     },
+    methods: {
+      async softDelete() {
+        this.deleted = true;
+        return this.save();
+      },
+    },
   },
 );
 

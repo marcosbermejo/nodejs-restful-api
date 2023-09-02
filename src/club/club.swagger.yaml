@@ -104,3 +104,23 @@ paths:
           description: Club not found.
         '500':
           description: Internal server error
+          
+    delete:
+      summary: Delete a water polo club by ID.
+      tags:
+        - Clubs
+      description: Delete a water polo club by its unique ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique ID of the club to delete.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Club deleted successfully.
+        '404':
+          description: Club not found.
+        '500':
+          description: Internal server error

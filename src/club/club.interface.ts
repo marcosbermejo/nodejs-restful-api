@@ -6,6 +6,7 @@ export default interface IClub extends Document {
   deleted: boolean;
   createdAt: Date;
   updatedAt: Date;
+  softDelete(): Promise<IClub>;
 }
 
 export interface IClubModel extends Model<IClub> {

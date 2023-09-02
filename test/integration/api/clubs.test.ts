@@ -5,6 +5,7 @@ import clubs from '../../fixtures/clubs';
 import Club from '../../../src/club/club.model';
 import '../setup';
 import { CLUB_NAME_LENGTH, INVALID_ID } from '../../../src/messages';
+import IClub from '../../../src/club/club.interface';
 
 describe('Integration Tests for the Clubs Management', () => {
   let app: Application;
@@ -39,8 +40,8 @@ describe('Integration Tests for the Clubs Management', () => {
     });
 
     it('Should return a 400 error when GET /clubs/:id with an invalid ID', async () => {
-      const nonExistentId = 'Lorem';
-      const { status, body: { errors } } = await request(app).get(`/clubs/${nonExistentId}`);
+      const nonValidId = 'Lorem';
+      const { status, body: { errors } } = await request(app).get(`/clubs/${nonValidId}`);
 
       expect(status).toBe(400);
       expect(errors[0]).toBe(INVALID_ID);
@@ -102,6 +103,39 @@ describe('Integration Tests for the Clubs Management', () => {
       // Ensure the `deleted` attribute was ignored and it's not deleted.
       const { body: { deleted } } = await request(app).get(`/clubs/${_id}`);
       expect(deleted).toBe(false);
+    });
+  });
+
+  describe('DELETE', () => {
+    it('Should soft delete a club by ID', async () => {
+      await Club.create(clubs);
+
+      const { status } = await request(app).delete(`/clubs/${clubs[0]._id}`);
+      expect(status).toBe(204);
+
+      // Ensure the `deleted` attribute is true
+      const { body: { deleted } } = await request(app).get(`/clubs/${clubs[0]._id}`);
+      expect(deleted).toBe(true);
+
+      // Ensure the deleted club does not appear in the list
+      const { body }: { body: IClub[] } = await request(app).get('/clubs');
+      expect(body.filter((club) => club._id === clubs[0]._id)).toHaveLength(0);
+    });
+
+    it('Should return a 404 error when deleting a non-existent valid ID', async () => {
+      const nonExistentId = '111111111111111111111111';
+      const { status, body: { message } } = await request(app).delete(`/clubs/${nonExistentId}`);
+
+      expect(status).toBe(404);
+      expect(message).toBe('Club not found');
+    });
+
+    it('Should return a 400 error when deleting an invalid ID', async () => {
+      const nonValid = 'Lorem';
+      const { status, body: { errors } } = await request(app).delete(`/clubs/${nonValid}`);
+
+      expect(status).toBe(400);
+      expect(errors[0]).toBe(INVALID_ID);
     });
   });
 });

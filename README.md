@@ -62,9 +62,4 @@ For running integration tests, you don't need to execute the Docker command ment
    npm test:int # integration tests
    npm test:unit # unit tests + code coverage
    ```
-  
-4. **Generate Code Coverage Reports:**
-   ```bash
-   npm run test:cov
-   ```
 
