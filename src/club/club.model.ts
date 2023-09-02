@@ -27,4 +27,3 @@ const ClubSchema = new Schema<IClub, IClubModel>(
 ClubSchema.index({ name: 1 });
 
 export default mongoose.model<IClub, IClubModel>('Club', ClubSchema);
-export { ClubSchema };

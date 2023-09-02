@@ -16,9 +16,9 @@ import IClub from './club/club.interface';
 
 declare global{
   namespace Express {
-      interface Request {
-        club?: IClub
-      }
+    interface Request {
+      club?: IClub
+    }
   }
 }
 

@@ -57,7 +57,7 @@ describe('Integration Tests for the Clubs Management', () => {
       expect(_id).not.toBeUndefined();
       expect(name).toBe(validClub.name);
 
-      // Ensure the club is prseent in the database.
+      // Ensure the club is present in the database.
       const response = await request(app).get(`/clubs/${_id}`);
 
       expect(response.status).toBe(200);
