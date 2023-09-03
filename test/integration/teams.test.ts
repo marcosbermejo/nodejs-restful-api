@@ -1,13 +1,12 @@
 import { Application } from 'express';
 import request from 'supertest';
-import Club from '../../../src/club/club.model';
-import Team from '../../../src/team/team.model';
-import clubs from '../../fixtures/clubs';
-import teams from '../../fixtures/teams';
-import bootstrap from '../../../src/app';
-import '../setup';
-import { CLUB_NOT_FOUND, INVALID_ID, TEAM_NAME_LENGTH } from '../../../src/messages';
-import { ITeam } from '../../../src/team/team.interface';
+import Club from '../../src/club/club.model';
+import Team from '../../src/team/team.model';
+import clubs from '../fixtures/clubs';
+import teams from '../fixtures/teams';
+import bootstrap from '../../src/app';
+import { CLUB_NOT_FOUND, INVALID_ID, TEAM_NAME_LENGTH } from '../../src/messages';
+import { ITeam } from '../../src/team/team.interface';
 
 describe('Integration Tests for the Teams Management', () => {
   let app: Application;

@@ -1,10 +1,8 @@
 import { Application } from 'express';
 import request from 'supertest';
-import bootstrap from '../../../src/app';
-import Club from '../../../src/club/club.model';
-
-import '../setup';
-import { ERROR_500 } from '../../../src/messages';
+import bootstrap from '../../src/app';
+import Club from '../../src/club/club.model';
+import { ERROR_500 } from '../../src/messages';
 
 describe('Integration Tests for the Express Application', () => {
   let app: Application;

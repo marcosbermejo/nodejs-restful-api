@@ -58,9 +58,8 @@ For running integration tests, you don't need to execute the Docker command ment
 
 3. **Run Tests:**
    ```bash
-   npm test # integration + unit tests
-   npm test:int # integration tests
-   npm test:unit # unit tests + code coverage
+   npm test
+   npm test:cov # code coverage
    ```
 
 ## API Endpoints

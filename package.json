@@ -6,8 +6,7 @@
     "start": "ts-node src/server.ts",
     "lint": "eslint . --ext .ts",
     "test": "jest",
-    "test:int": "jest integration",
-    "test:unit": "jest unit --coverage",
+    "test:cov": "jest --coverage",
     "prepare": "husky install"
   },
   "dependencies": {
