@@ -1,5 +1,4 @@
-import { body, param } from 'express-validator';
-import mongoose from 'mongoose';
+import { body, param, query } from 'express-validator';
 import Club from '../club/club.model';
 import { TEAM_NAME_LENGTH, INVALID_ID, CLUB_NOT_FOUND } from '../messages';
 
@@ -11,21 +10,26 @@ export const createTeamValidation = [
     .escape(),
 
   body('club')
+    .isMongoId()
+    .withMessage(INVALID_ID)
     .custom(async (value: string) => {
-      if (!mongoose.isValidObjectId(value)) {
-        throw new Error(INVALID_ID);
-      }
-
       if (!await Club.findById(value)) {
         throw new Error(CLUB_NOT_FOUND);
       }
-
       return true;
     }),
 ];
 
 export const getTeamValidation = [
   param('id')
-    .custom((value: string) => mongoose.isValidObjectId(value))
+    .isMongoId()
     .withMessage(INVALID_ID),
+];
+
+export const getTeamsValidation = [
+  query('clubId')
+    .optional()
+    .isMongoId()
+    .withMessage(INVALID_ID)
+    .escape(),
 ];

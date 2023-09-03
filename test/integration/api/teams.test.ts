@@ -16,12 +16,37 @@ describe('Integration Tests for the Teams Management', () => {
   });
 
   describe('GET', () => {
-    it('Should list teams', async () => {
+    beforeEach(async () => {
       await Club.create(clubs);
       await Team.create(teams);
-      const { body } = await request(app).get('/teams');
+    });
+
+    it('Should list teams', async () => {
+      const { status, body } = await request(app).get('/teams');
+      expect(status).toBe(200);
       expect(body).toBeInstanceOf(Array);
       expect(body).toHaveLength(teams.length);
+    });
+
+    it('Should list teams of a given Club ID', async () => {
+      const { body } = await request(app).get(`/teams?clubId=${clubs[0]._id}`);
+      expect(body).toBeInstanceOf(Array);
+      expect(body).toHaveLength(teams.filter((team) => team.club === clubs[0]._id).length);
+    });
+
+    it('Should return error 400 for an invalid Club ID', async () => {
+      const { status, body: { errors } } = await request(app).get('/teams?clubId=Lorem');
+
+      expect(status).toBe(400);
+      expect(errors[0]).toBe(INVALID_ID);
+    });
+
+    it('Should return an empty array of teams for a valid non-existent Club ID', async () => {
+      const { status, body } = await request(app).get('/teams?clubId=111111111111111111111111');
+
+      expect(status).toBe(200);
+      expect(body).toBeInstanceOf(Array);
+      expect(body).toHaveLength(0);
     });
   });
 

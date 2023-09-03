@@ -1,5 +1,4 @@
 import { body, param } from 'express-validator';
-import mongoose from 'mongoose';
 import { CLUB_NAME_LENGTH, INVALID_ID } from '../messages';
 
 export const createClubValidation = [
@@ -12,6 +11,6 @@ export const createClubValidation = [
 
 export const getClubValidation = [
   param('id')
-    .custom((value: string) => mongoose.isValidObjectId(value))
+    .isMongoId()
     .withMessage(INVALID_ID),
 ];

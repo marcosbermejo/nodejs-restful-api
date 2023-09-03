@@ -5,6 +5,12 @@ paths:
       tags:
         - Teams
       description: Retrieve the list of active water polo teams.
+      parameters:
+        - in: query
+          name: clubId
+          schema:
+            type: string
+          description: (Optional) Filter teams by club ID.  
       responses:
         '200':
           description: List of teams retrieved successfully.

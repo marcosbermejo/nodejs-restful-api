@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import Team from './team.model';
 import validate from '../validation';
-import { createTeamValidation, getTeamValidation } from './team.validation';
+import { createTeamValidation, getTeamValidation, getTeamsValidation } from './team.validation';
 import { TEAM_NOT_FOUND } from '../messages';
 
 const router = express.Router();
@@ -15,8 +15,10 @@ router.get('/:id', validate(getTeamValidation), async (req: Request, res: Respon
   return res.status(200).json(team);
 });
 
-router.get('/', async (req: Request, res: Response) => {
-  const teams = await Team.find();
+router.get('/', validate(getTeamsValidation), async (req: Request, res: Response) => {
+  const { clubId } = req.query;
+  const teams = await Team.find(clubId ? { club: clubId } : {});
+
   return res.status(200).json(teams);
 });
 
