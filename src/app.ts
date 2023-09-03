@@ -12,12 +12,14 @@ import swaggerSpec, { uiOptions } from './swagger';
 
 import { metricsMiddleware, metricsController } from './metrics';
 import errorHandler from './errors';
-import IClub from './club/club.interface';
+import { IClub } from './club/club.interface';
+import { ITeam } from './team/team.interface';
 
 declare global{
   namespace Express {
     interface Request {
       club?: IClub
+      team?: ITeam
     }
   }
 }

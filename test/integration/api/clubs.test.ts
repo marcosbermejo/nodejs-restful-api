@@ -5,7 +5,7 @@ import clubs from '../../fixtures/clubs';
 import Club from '../../../src/club/club.model';
 import '../setup';
 import { CLUB_NAME_LENGTH, INVALID_ID } from '../../../src/messages';
-import IClub from '../../../src/club/club.interface';
+import { IClub } from '../../../src/club/club.interface';
 
 describe('Integration Tests for the Clubs Management', () => {
   let app: Application;

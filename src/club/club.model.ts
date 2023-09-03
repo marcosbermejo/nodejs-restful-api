@@ -1,29 +1,21 @@
-import mongoose, { Schema } from 'mongoose';
-import IClub, { IClubModel } from './club.interface';
+import mongoose from 'mongoose';
+import { IClub, IClubModel } from './club.interface';
+import BaseSchema from '../base/base.model';
 
-const ClubSchema = new Schema<IClub, IClubModel>(
+const ClubSchema = new BaseSchema<IClub, IClubModel>(
   {
     name: { type: String, required: true, index: true },
     address: { type: String, required: false },
-    deleted: { type: Boolean, default: false },
   },
-  {
-    collection: 'clubs',
-    timestamps: true,
-    statics: {
-      async findAllActive() {
-        return this.find({ deleted: false });
-      },
-    },
-    methods: {
-      async softDelete() {
-        this.deleted = true;
-        return this.save();
-      },
-    },
-  },
+  'clubs',
 );
 
 ClubSchema.index({ name: 1 });
+
+ClubSchema.virtual('teams', {
+  ref: 'Team',
+  localField: '_id',
+  foreignField: 'club',
+});
 
 export default mongoose.model<IClub, IClubModel>('Club', ClubSchema);

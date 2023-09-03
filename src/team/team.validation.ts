@@ -13,7 +13,8 @@ export const createTeamValidation = [
     .isMongoId()
     .withMessage(INVALID_ID)
     .custom(async (value: string) => {
-      if (!await Club.findById(value)) {
+      const club = await Club.findById(value);
+      if (!club || club.deleted) {
         throw new Error(CLUB_NOT_FOUND);
       }
       return true;

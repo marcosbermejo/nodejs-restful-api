@@ -4,6 +4,7 @@ import { getClubValidation, createClubValidation } from './club.validation';
 import validate from '../validation';
 import getClubById from './club.middleware';
 import { CreateClubDTO } from './club.interface';
+import ClubService from './club.service';
 
 const router = express.Router();
 
@@ -19,12 +20,14 @@ router.get('/', async (req: Request, res: Response) => {
 
 router.post('/', validate(createClubValidation), async (req: Request<{}, {}, CreateClubDTO>, res: Response) => {
   const { name, address } = req.body;
-  const newClub = await Club.create({ name: name.toString(), address: address?.toString() });
+  const newClub = await ClubService.createClub({ name, address });
   return res.status(201).json(newClub);
 });
 
 router.delete('/:id', validate(getClubValidation), getClubById, async (req: Request, res: Response) => {
-  await req.club?.softDelete();
+  if (req.club) {
+    await ClubService.deleteClubAndTeams(req.club);
+  }
   return res.status(204).send();
 });
 

@@ -1,9 +1,16 @@
-import { Document, Types } from 'mongoose';
-import IClub from '../club/club.interface';
+import { Types } from 'mongoose';
+import { IBase, IBaseModel } from '../base/base.interface';
 
-export default interface ITeam extends Document {
+export interface ITeam extends IBase {
   name: string;
-  club: Types.ObjectId | IClub;
-  createdAt: Date;
-  updatedAt: Date;
+  club: Types.ObjectId;
+}
+
+export interface ITeamModel extends IBaseModel<ITeam> {
+  // Add here custom attributes and methods
+}
+
+export interface CreateTeamDTO {
+  name: string;
+  club: string;
 }

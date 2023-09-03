@@ -1,16 +1,14 @@
-import { Model, Document } from 'mongoose';
+import { IBase, IBaseModel } from '../base/base.interface';
+import { ITeam } from '../team/team.interface';
 
-export default interface IClub extends Document {
+export interface IClub extends IBase {
   name: string;
   address: string;
-  deleted: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  softDelete(): Promise<IClub>;
+  teams: ITeam[];
 }
 
-export interface IClubModel extends Model<IClub> {
-  findAllActive(): Promise<IClub[]>;
+export interface IClubModel extends IBaseModel<IClub> {
+  // Add here custom attributes and methods
 }
 
 export interface CreateClubDTO {

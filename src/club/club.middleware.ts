@@ -5,7 +5,7 @@ import { CLUB_NOT_FOUND } from '../messages';
 
 export default async function getClubById(req: Request, res: Response, next: NextFunction) {
   const clubId = req.params.id;
-  const club = await Club.findById(clubId);
+  const club = await Club.findById(clubId).populate('teams');
 
   if (!club) {
     return res.status(404).json({ message: CLUB_NOT_FOUND });

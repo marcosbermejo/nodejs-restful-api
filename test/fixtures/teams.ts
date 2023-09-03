@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import clubs from './clubs';
 
-import ITeam from '../../src/team/team.interface';
+import { ITeam } from '../../src/team/team.interface';
 
 const generateObjectId = () => new mongoose.Types.ObjectId().toHexString();
 

@@ -63,3 +63,15 @@ For running integration tests, you don't need to execute the Docker command ment
    npm test:unit # unit tests + code coverage
    ```
 
+## API Endpoints
+
+| HTTP Verbs | Endpoints | Action               |
+| ---------- | --------- | ------------------- |
+| GET        | /clubs    | Retrieve a list of all active clubs |
+| POST       | /clubs    | Create a new club    |
+| GET        | /clubs/:id | Get details of a club |
+| DELETE     | /clubs/:id | Soft delete a club and its associated teams   |
+| GET        | /teams    | Retrieve a list of all active teams |
+| POST       | /teams    | Create a new team    |
+| GET        | /teams/:id | Get details of a team |
+| DELETE     | /teams/:id | Soft delete a team   |

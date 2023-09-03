@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import IClub from '../../src/club/club.interface';
+import { IClub } from '../../src/club/club.interface';
 
 const generateObjectId = () => new mongoose.Types.ObjectId().toHexString();
 

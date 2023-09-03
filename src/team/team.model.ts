@@ -1,17 +1,15 @@
 import mongoose, { Schema } from 'mongoose';
-import ITeam from './team.interface';
+import { ITeam, ITeamModel } from './team.interface';
+import BaseSchema from '../base/base.model';
 
-const TeamSchema = new Schema<ITeam>(
+const TeamSchema = new BaseSchema<ITeam, ITeamModel>(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, index: true },
     club: { type: Schema.Types.ObjectId, ref: 'Club', required: true },
   },
-  {
-    collection: 'teams',
-    timestamps: true,
-  },
+  'teams',
 );
 
 TeamSchema.index({ name: 1 });
 
-export default mongoose.model<ITeam>('Team', TeamSchema);
+export default mongoose.model<ITeam, ITeamModel>('Team', TeamSchema);
