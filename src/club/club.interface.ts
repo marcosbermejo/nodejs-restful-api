@@ -12,3 +12,8 @@ export default interface IClub extends Document {
 export interface IClubModel extends Model<IClub> {
   findAllActive(): Promise<IClub[]>;
 }
+
+export interface CreateClubDTO {
+  name: string;
+  address?: string;
+}

@@ -64,6 +64,18 @@ describe('Integration Tests for the Clubs Management', () => {
       expect(response.body.name).toBe(validClub.name);
     });
 
+    it('Should create a club when providing a name and address', async () => {
+      const validClub = { name: 'Waterpolo Club', address: 'Test Address' };
+      const { body: { _id } } = await request(app).post('/clubs').send(validClub);
+
+      // Ensure the club is present in the database.
+      const response = await request(app).get(`/clubs/${_id}`);
+
+      expect(response.status).toBe(200);
+      expect(response.body.name).toBe(validClub.name);
+      expect(response.body.address).toBe(validClub.address);
+    });
+
     it('Should return error 400 when creating a club without a name', async () => {
       const invalidClub = {};
       const { status, body: { errors } } = await request(app).post('/clubs').send(invalidClub);
